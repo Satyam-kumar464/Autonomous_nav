@@ -1,0 +1,3 @@
+<node pkg="rviz" type="rviz" name="rviz"
+      args="-d $(find rover_mission)/rviz/mission_config.rviz"
+      output="screen"/>

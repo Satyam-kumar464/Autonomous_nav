@@ -1,0 +1,30 @@
+<launch>
+  <!-- 🕹️ Teleop for manual control -->
+  <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py"
+        name="teleop" output="screen"/>
+  
+
+  <!-- ⚙️ Load controller parameters -->
+  <include file="$(find rover_mission)/launch/controller.launch"/>
+
+  <!-- 🌍 Launch Gazebo simulation -->
+  <include file="$(find rover_mission)/launch/gazebo.launch"/>
+
+  <!-- 🤖 Load robot description from Xacro -->
+  <param name="robot_description"
+         command="$(find xacro)/xacro $(find rover_mission)/urdf/rover.urdf.xacro"/>
+
+  <!-- 🚀 Spawn robot in Gazebo -->
+  <node name="$(anon spawn_urdf)" pkg="gazebo_ros" type="spawn_model"
+        args="-param robot_description -urdf -model rover_$(anon id)"
+        output="screen"/>
+
+  <!-- 🧠 Start controller manager -->
+  <node name="$(anon controller_spawner)" pkg="controller_manager" type="spawner"
+        args="diff_drive_controller"
+        output="screen"/>
+
+  <!-- 🗺️ Load costmap or exploration parameters -->
+  <rosparam file="$(find rover_mission)/config/costmap_exploration.yaml" command="load"/>
+</launch>
+

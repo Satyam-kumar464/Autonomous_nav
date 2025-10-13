@@ -1,0 +1,13 @@
+build/
+devel/
+install/
+*.pyc
+*.log
+*.swp
+*.sdf
+*.world
+*.db
+*.zip
+*.tar.gz
+*.egg-info
+__pycache__/
