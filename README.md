@@ -14,4 +14,4 @@ roslaunch rover_mission spawn.launch
 
 ##Auther
 
-Satyam Kumar
+Satyam
