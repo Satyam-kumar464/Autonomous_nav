@@ -11,3 +11,7 @@ A modular ROS Noetic workspace for simulating and controlling a differential dri
 ## Usage
 ```bash
 roslaunch rover_mission spawn.launch
+
+##Auther
+
+Satyam Kumar
